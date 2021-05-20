@@ -75,3 +75,14 @@ create table cura(
 	suknja varchar(36),
 	punac int
 );
+
+alter table sestra_svekar add foreign key (sestra) references sestra(sifra);
+alter table sestra_svekar add foreign key (svekar) references svekar(sifra);
+
+alter table zena add foreign key (sestra) references sestra(sifra);
+
+alter table muskarac add foreign key (zena) references zena(sifra);
+
+alter table mladic add foreign key (muskarac) references muskarac(sifra);
+
+alter table cura add foreign key (punac) references punac(sifra);
