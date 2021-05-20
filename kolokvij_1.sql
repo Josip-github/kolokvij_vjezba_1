@@ -7,24 +7,24 @@ create table sestra(
 	introvertno bit,
 	haljina varchar(31) not null,
 	maraka decimal(16,6),
-	hlace varchar (46) not null,
+	hlace varchar(46) not null,
 	narukvica int not null
 );
 
 create table sestra_svekar(
-	sifra int,
-	sestra int,
-	svekar int
+	sifra int not null primary key auto_increment,
+	sestra int not null,
+	svekar int not null
 );
 
 create table svekar(
-	sifra int not null,
-	boja ociju varchar(40) not null,
+	sifra int not null primary key auto_increment,
+	bojaociju varchar(40) not null,
 	prstena int,
 	dukserica varchar(41),
-	lipa decimal(13,8)
-	eura decimal(12,7),
-	majica varchar(35)
+	lipa decimal(13,8),
+	eura decimal(12,7) not null,
+	majica varchar(35) not null
 );
 
 create table zena(
@@ -41,7 +41,7 @@ create table zena(
 create table muskarac(
 	sifra int not null primary key auto_increment,
 	bojaociju varchar(50) not null,
-	hlacevarchar(30),
+	hlace varchar(30),
 	modelnaocala varchar(43),
 	maraka decimal(14,5) not null,
 	zena int not null
@@ -86,3 +86,27 @@ alter table muskarac add foreign key (zena) references zena(sifra);
 alter table mladic add foreign key (muskarac) references muskarac(sifra);
 
 alter table cura add foreign key (punac) references punac(sifra);
+
+insert into sestra(haljina,hlace,narukvica)
+values('duga haljina','kratke hlače',7),
+('kratka haljina','duge hlače',8),
+('uska haljina','hlače iz Zare',9);
+
+insert into zena(kratkamajica,jmbag,bojaociju,sestra)
+values('kratkih rukava',77666555,'zelena',1),
+('bez rukava',77555666,'plava',2),
+('top',666555777,'žuta',3);
+
+insert into muskarac(bojaociju,maraka,zena)
+values('crna',10.10,1),
+('siva',11.10,2),
+('bijela',12.10,3);
+
+insert into svekar(bojaociju,eura,majica)
+values('smeđa',20.05,'duga majica'),
+('crvena',25.76,'kratka majica'),
+('zelenkasta',50.067,'Nike majica');
+
+insert into sestra_svekar(sestra,svekar) 
+values(1,3),(3,1),(2,2);
+
