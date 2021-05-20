@@ -110,3 +110,10 @@ values('smeđa',20.05,'duga majica'),
 insert into sestra_svekar(sestra,svekar) 
 values(1,3),(3,1),(2,2);
 
+insert into cura(novcica,gustoca,ogrlica)
+values(13.45,12.10,1),(14.35,10.19,2);
+
+update cura set gustoca = 15.77;
+
+select * from cura;
+
