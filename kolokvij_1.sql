@@ -125,8 +125,8 @@ inner join mladic f on e.sifra = f.muskarac
 where d.hlace like 'a%' and c.haljina like '%ba%';
 
 select a.haljina, a.maraka 
-from sestra a inner join sestra_svekar b on a.sifra = b.sestra 
-where 
+from sestra a left join sestra_svekar b on a.sifra = b.sestra 
+where b.sestra is null;
 
 
 
